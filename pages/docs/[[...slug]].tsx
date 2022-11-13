@@ -11,11 +11,15 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeToc, { HtmlElementNode, ListItemNode } from '@jsdevtools/rehype-toc';
 import { Layout, CustomLink, Navigator, CodeBlock } from '@/components';
 import imageMetadata from '@/utils/rehypeImageMeta';
+import { prefix } from '@/utils/prefix';
 
-import Image, { ImageProps } from 'next/image';
+import { ImageProps } from 'next/image';
+// import Image, { ImageProps } from 'next/image';
+import ExportedImage from 'next-image-export-optimizer';
 
 export function NextImage({ src, alt, width, height, ...rest }: ImageProps) {
-  return <Image src={src} alt={alt} className='image-hi' width={width} height={height} {...rest} />;
+  const prefixSrc = `${prefix}${src}`;
+  return <ExportedImage src={prefixSrc} alt={alt} className='image-hi' width={width} height={height} {...rest} />;
 }
 
 // Custom components/renderers to pass to MDX.

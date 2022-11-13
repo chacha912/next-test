@@ -1,10 +1,12 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import Image from 'next/image';
+// import Image from 'next/image';
+import ExportedImage from 'next-image-export-optimizer';
 import { Layout } from '@/components';
 import StarsSVG from '@/public/assets/icons/icon_stars.svg';
 import CopySVG from '@/public/assets/icons/icon_copy.svg';
+import { prefix } from '@/utils/prefix';
 
 const Home: NextPage = () => {
   return (
@@ -21,7 +23,12 @@ const Home: NextPage = () => {
               <span className='point'>
                 collaboration
                 <span className='bg'>
-                  <Image src='/assets/images/dashboard.png' alt='dashboard' width={640} height={300} />
+                  <ExportedImage
+                    src={`${prefix}/assets/images/dashboard.png`}
+                    alt='dashboard'
+                    width={640}
+                    height={300}
+                  />
                 </span>
               </span>
               <span className='text'>your products</span>

@@ -3,8 +3,19 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    unoptimized: true,
+    loader: 'custom',
+    imageSizes: [128, 256, 384],
+    deviceSizes: [640, 750, 1080, 1200, 1920],
   },
+  env: {
+    nextImageExportOptimizer_imageFolderPath: 'public/assets/images',
+    nextImageExportOptimizer_exportFolderPath: 'out',
+    nextImageExportOptimizer_quality: 75,
+    nextImageExportOptimizer_storePicturesInWEBP: true,
+    nextImageExportOptimizer_generateAndUseBlurImages: true,
+  },
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
+  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH + '/' || '',
   webpack: (config) => {
     config.module.rules.push({
       test: /\.svg$/i,
