@@ -10,6 +10,13 @@ import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeToc, { HtmlElementNode, ListItemNode } from '@jsdevtools/rehype-toc';
 import { Layout, CustomLink, Navigator, CodeBlock } from '@/components';
+import imageMetadata from '@/utils/rehypeImageMeta';
+
+import Image, { ImageProps } from 'next/image';
+
+export function NextImage({ src, alt, width, height, ...rest }: ImageProps) {
+  return <Image src={src} alt={alt} className='image-hi' width={width} height={height} {...rest} />;
+}
 
 // Custom components/renderers to pass to MDX.
 const components: MDXComponents = {
@@ -20,6 +27,10 @@ const components: MDXComponents = {
   h6: (props) => <h6 className='heading' {...props} />,
   pre: (props) => <CodeBlock {...props} />,
   TestComponent: dynamic(() => import('@/components/TestComponent')),
+  img: ({ src, alt, title, width, height }) => (
+    <NextImage src={src!} alt={alt || ''} title={title} width={width as number} height={height as number} />
+  ),
+  Image: NextImage,
 };
 
 export default function DocsPage({
@@ -99,6 +110,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     mdxOptions: {
       remarkPlugins: [remarkGfm],
       rehypePlugins: [
+        imageMetadata,
         rehypeSlug,
         [
           rehypeAutolinkHeadings,

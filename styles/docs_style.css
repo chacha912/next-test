@@ -18,6 +18,16 @@
   text-decoration: underline;
   color: var(--orange-0);
 }
+.image-wrap {
+  position: relative;
+  width: 100%;
+}
+.image-hi {
+  width: 100%;
+  height: auto !important;
+  position: relative !important;
+  object-fit: contain !important;
+}
 
 .heading {
   margin: 20px 0;

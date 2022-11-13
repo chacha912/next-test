@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Layout } from '@/components';
 import StarsSVG from '@/public/assets/icons/icon_stars.svg';
 import CopySVG from '@/public/assets/icons/icon_copy.svg';
@@ -19,7 +20,9 @@ const Home: NextPage = () => {
               <span className='text'>Breathe</span>
               <span className='point'>
                 collaboration
-                <span className='bg'></span>
+                <span className='bg'>
+                  <Image src='/assets/images/dashboard.png' alt='dashboard' width={640} height={300} />
+                </span>
               </span>
               <span className='text'>your products</span>
             </h2>
