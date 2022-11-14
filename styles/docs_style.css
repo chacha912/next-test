@@ -60,5 +60,5 @@
 }
 
 .toc-item.is_active {
-  background: url('/next-test/assets/icons/icon_arrow_circle_right.svg') no-repeat 0 14px;
+  background: url(/assets/icons/icon_arrow_circle_right.svg) no-repeat 0 11px;
 }
